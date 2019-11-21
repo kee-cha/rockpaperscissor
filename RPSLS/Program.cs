@@ -10,6 +10,11 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
+            Human tim = new Human();
+            tim.playerSelection();
+            tim.validatePlayerChoice();
+            Console.WriteLine(tim.playerChoice);
+            Console.ReadLine();
         }
     }
 }
