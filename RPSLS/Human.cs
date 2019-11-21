@@ -21,6 +21,7 @@ namespace RPSLS
                 + " 4: Lizard" + "\n"
                 + " 5: Spock" + "\n");
             validateChoice = Console.ReadLine();
+            Console.Clear();
 
             foreach( string select in selection)
             {
@@ -41,6 +42,7 @@ namespace RPSLS
         {
             Console.WriteLine("Please enter your name.");
             name = Console.ReadLine();
+            Console.Clear();
         }
         public override void PlayerChoice()
         {
@@ -63,7 +65,7 @@ namespace RPSLS
                     break;
             }
             Console.WriteLine(playerGesture);
-            Console.ReadLine();
+            Console.Clear();
             
         }
     }

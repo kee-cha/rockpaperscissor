@@ -15,31 +15,29 @@ namespace RPSLS
         {
             Console.WriteLine("How many of players will be playing? 1 or 2");
             string numOfPlayer = Console.ReadLine();
+            Console.Clear();
             return numOfPlayer;
         }
 
         public void CreatePlayers(string numOfPlayer)
         {
-                if (numOfPlayer == "1")
-                {
-                    firstPlayer = new Human();
-                    secondPlayer = new Computer();
-                }
-                else if (numOfPlayer == "2")
-                {
-                    firstPlayer = new Human();
-                    secondPlayer = new Human();
-                }
-                else
-                {
-                    GetNumOfPlayer();
-                }
+            if (numOfPlayer == "1")
+            {
+                firstPlayer = new Human();
+                secondPlayer = new Computer();
+            }
+            else if (numOfPlayer == "2")
+            {
+                firstPlayer = new Human();
+                secondPlayer = new Human();
+            }
         }
 
         public void gameStart()
         {
             Console.WriteLine("let's get ready to play ROCK PAPER SCISSOR LIZARD SPOCK!");
             Console.ReadLine();
+            Console.Clear();
             string input = GetNumOfPlayer();
             CreatePlayers(input);
             firstPlayer.ChoosePlayerName();
@@ -50,9 +48,36 @@ namespace RPSLS
             secondPlayer.PlayerChoice();
         }
 
-        public void gameRule()
+        public void GameRule()
         {
-            
+            if(firstPlayer.playerGesture == secondPlayer.playerGesture)
+            {
+                Console.WriteLine("tie");
+            }
+            else if(firstPlayer.playerGesture == "rock" && (secondPlayer.playerGesture == "scissor" || secondPlayer.playerGesture == "lizard"))
+            {
+                firstPlayer.points++;
+            }
+            else if(firstPlayer.playerGesture == "scissor" && (secondPlayer.playerGesture == "paper" || secondPlayer.playerGesture == "lizard"))
+            {
+                firstPlayer.points++;
+            }
+            else if(firstPlayer.playerGesture == "paper" && (secondPlayer.playerGesture == "rock" || secondPlayer.playerGesture == "spock"))
+            {
+                firstPlayer.points++;
+            }
+            else if(firstPlayer.playerGesture == "lizard" && (secondPlayer.playerGesture == "paper" || secondPlayer.playerGesture == "spock"))
+            {
+                firstPlayer.points++;
+            }
+            else if(firstPlayer.playerGesture == "spock" && (secondPlayer.playerGesture == "scissors" || secondPlayer.playerGesture == "rock"))
+            {
+                firstPlayer.points++;
+            }
+            else
+            {
+                secondPlayer.points++;
+            }
         }
     }
 }
