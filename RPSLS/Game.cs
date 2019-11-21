@@ -13,7 +13,7 @@ namespace RPSLS
 
         public string GetNumOfPlayer()
         {
-            Console.WriteLine("How many of players? 1 or 2");
+            Console.WriteLine("How many of players will be playing? 1 or 2");
             string numOfPlayer = Console.ReadLine();
             return numOfPlayer;
         }
@@ -38,10 +38,21 @@ namespace RPSLS
 
         public void gameStart()
         {
+            Console.WriteLine("let's get ready to play ROCK PAPER SCISSOR LIZARD SPOCK!");
+            Console.ReadLine();
             string input = GetNumOfPlayer();
             CreatePlayers(input);
-            firstPlayer.ChooseChoice();
-            secondPlayer.ChooseChoice();
+            firstPlayer.ChoosePlayerName();
+            secondPlayer.ChoosePlayerName();
+            firstPlayer.ChooseNumber();
+            firstPlayer.PlayerChoice();
+            secondPlayer.ChooseNumber();
+            secondPlayer.PlayerChoice();
+        }
+
+        public void gameRule()
+        {
+            
         }
     }
 }

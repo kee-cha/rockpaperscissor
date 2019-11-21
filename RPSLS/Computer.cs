@@ -8,12 +8,10 @@ namespace RPSLS
 {
     public class Computer : Player
     {
-        public override void ChooseChoice()
+        public override void ChooseNumber()
         {
             Random cpuChoice = new Random();
-            int choice = cpuChoice.Next(1,6);
-            Console.WriteLine(choice);
-            Console.ReadLine();
+             choice = cpuChoice.Next(1,6);
         }
 
         public override void ChoosePlayerName()
@@ -22,7 +20,7 @@ namespace RPSLS
             name = Console.ReadLine();
         }
 
-        public void playerChoice(int choice)
+        public override void PlayerChoice()
         {
             switch (choice)
             {
@@ -30,18 +28,20 @@ namespace RPSLS
                     playerGesture = gestures.ElementAt(0);
                     break;
                 case 2:
-                     playerGesture = gestures.ElementAt(1);
+                    playerGesture = gestures.ElementAt(1);
                     break;
                 case 3:
-                     playerGesture = gestures.ElementAt(2);
+                    playerGesture = gestures.ElementAt(2);
                     break;
                 case 4:
-                     playerGesture = gestures.ElementAt(3);
+                    playerGesture = gestures.ElementAt(3);
                     break;
                 case 5:
                     playerGesture = gestures.ElementAt(4);
                     break;
             }
+            Console.WriteLine(playerGesture);
+            Console.ReadLine();
         }
     }
 }

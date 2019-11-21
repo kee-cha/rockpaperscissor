@@ -10,35 +10,61 @@ namespace RPSLS
     {
         public List<string> selection = new List<string>() { "1", "2", "3", "4", "5" };
         public string validateChoice;
-        public int playerChoice;
+       
 
-        public string playerSelection()
+        public override void ChooseNumber()
         {
-            Console.WriteLine("Enter your number selection from 1 -5.");
+            Console.WriteLine("Enter your number selection from 1 -5." + "\n"
+                + " 1: Rock" + "\n"
+                + " 2: Paper" + "\n"
+                + " 3: Scissor" + "\n"
+                + " 4: Lizard" + "\n"
+                + " 5: Spock" + "\n");
             validateChoice = Console.ReadLine();
-            return validateChoice;
-        }
 
-        public override void ChooseChoice()
-        {
             foreach( string select in selection)
             {
                 if(validateChoice == select)
                 {
-                    playerChoice = Int32.Parse(validateChoice);
+                    choice = Int32.Parse(validateChoice);
                     break;
                 }
                 else
                 {
-                    playerChoice = 0;
+                    choice = 0;
                 }
             }
+            
         }
 
         public override void ChoosePlayerName()
         {
             Console.WriteLine("Please enter your name.");
             name = Console.ReadLine();
+        }
+        public override void PlayerChoice()
+        {
+            switch (choice)
+            {
+                case 1:
+                    playerGesture = gestures.ElementAt(0);
+                    break;
+                case 2:
+                    playerGesture = gestures.ElementAt(1);
+                    break;
+                case 3:
+                    playerGesture = gestures.ElementAt(2);
+                    break;
+                case 4:
+                    playerGesture = gestures.ElementAt(3);
+                    break;
+                case 5:
+                    playerGesture = gestures.ElementAt(4);
+                    break;
+            }
+            Console.WriteLine(playerGesture);
+            Console.ReadLine();
+            
         }
     }
 }

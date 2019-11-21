@@ -10,14 +10,6 @@ namespace RPSLS
     {
         static void Main(string[] args)
         {
-            //Human tim = new Human();
-            //tim.playerSelection();
-            //tim.validatePlayerChoice();
-            //Console.WriteLine(tim.playerChoice);
-            //Console.ReadLine();
-            //Player cpu = new Computer();
-            //cpu.ChoosePlayerName();
-            //cpu.ChooseChoice();
             Game rockPaperScissor = new Game();
             rockPaperScissor.gameStart();
             
