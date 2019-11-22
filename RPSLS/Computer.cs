@@ -11,7 +11,7 @@ namespace RPSLS
         public override void ChooseNumber()
         {
             Random cpuChoice = new Random();
-             choice = cpuChoice.Next(1,6);
+             choice = cpuChoice.Next(0,5);
         }
 
         public override void ChoosePlayerName()
@@ -24,26 +24,10 @@ namespace RPSLS
 
         public override void PlayerChoice()
         {
-            switch (choice)
-            {
-                case 1:
-                    playerGesture = gestures.ElementAt(0);
-                    break;
-                case 2:
-                    playerGesture = gestures.ElementAt(1);
-                    break;
-                case 3:
-                    playerGesture = gestures.ElementAt(2);
-                    break;
-                case 4:
-                    playerGesture = gestures.ElementAt(3);
-                    break;
-                case 5:
-                    playerGesture = gestures.ElementAt(4);
-                    break;
-            }
-            Console.WriteLine(playerGesture);
+            choose = gestures[choice];
+            Console.WriteLine("Second player chooses " + choose);
             Console.ReadLine();
+            Console.Clear();
         }
     }
 }

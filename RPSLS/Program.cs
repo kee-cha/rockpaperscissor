@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace RPSLS
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Game rockPaperScissor = new Game();
-            rockPaperScissor.gameStart();
+            rockPaperScissor.GameStart();
             
         }
     }

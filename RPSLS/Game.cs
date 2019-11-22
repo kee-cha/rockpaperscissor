@@ -13,12 +13,24 @@ namespace RPSLS
 
         public string GetNumOfPlayer()
         {
-            Console.WriteLine("How many of players will be playing? 1 or 2");
-            string numOfPlayer = Console.ReadLine();
-            Console.Clear();
-            if(numOfPlayer != "1" && numOfPlayer != "2")
+            string numOfPlayer = "";
+            bool validChoice = false;
+            while (!validChoice)
             {
-                GetNumOfPlayer();
+                Console.WriteLine("How many of players will be playing? 1 or 2");
+                numOfPlayer = Console.ReadLine();
+                Console.Clear();
+                switch (numOfPlayer)
+                {
+                    case "1":
+                        validChoice = true;
+                        break;
+                    case "2":
+                        validChoice = true;
+                        break;
+                    default:
+                        break;
+                }
             }
             return numOfPlayer;
         }
@@ -37,9 +49,9 @@ namespace RPSLS
             }
         }
 
-        public void gameStart()
+        public void GameStart()
         {
-            Console.WriteLine("let's get ready to play ROCK PAPER SCISSOR LIZARD SPOCK!");
+            Console.WriteLine("let's get ready to play ROCK, PAPER, SCISSOR, LIZARD, SPOCK!");
             Console.ReadLine();
             Console.Clear();
             string input = GetNumOfPlayer();
@@ -47,51 +59,54 @@ namespace RPSLS
             firstPlayer.ChoosePlayerName();
             secondPlayer.ChoosePlayerName();
             WinLose();
+            Replay();
         }
 
+        public void DisplayWinner()
+        {
+            Console.WriteLine(firstPlayer.name + " wins this round. Score is: " + firstPlayer.points);
+            Console.ReadLine();
+            Console.Clear();
+        }
         public void GameRule()
         {
-            if(firstPlayer.playerGesture == secondPlayer.playerGesture)
+            if(firstPlayer.choose == secondPlayer.choose)
             {
                 Console.WriteLine("This round is a tie.");
                 Console.ReadLine();
+                Console.Clear();
             }
-            else if(firstPlayer.playerGesture == "rock" && (secondPlayer.playerGesture == "scissor" || secondPlayer.playerGesture == "lizard"))
+            else if(firstPlayer.choose == "rock" && (secondPlayer.choose == "scissor" || secondPlayer.choose == "lizard"))
             {
                 firstPlayer.points++;
-                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
-                Console.ReadLine();
-                
+                DisplayWinner();
             }
-            else if(firstPlayer.playerGesture == "scissor" && (secondPlayer.playerGesture == "paper" || secondPlayer.playerGesture == "lizard"))
+            else if(firstPlayer.choose == "scissor" && (secondPlayer.choose == "paper" || secondPlayer.choose == "lizard"))
             {
                 firstPlayer.points++;
-                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
-                Console.ReadLine();
+                DisplayWinner();
             }
-            else if(firstPlayer.playerGesture == "paper" && (secondPlayer.playerGesture == "rock" || secondPlayer.playerGesture == "spock"))
+            else if(firstPlayer.choose == "paper" && (secondPlayer.choose == "rock" || secondPlayer.choose == "spock"))
             {
                 firstPlayer.points++;
-                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
-                Console.ReadLine();
+                DisplayWinner();
             }
-            else if(firstPlayer.playerGesture == "lizard" && (secondPlayer.playerGesture == "paper" || secondPlayer.playerGesture == "spock"))
+            else if(firstPlayer.choose == "lizard" && (secondPlayer.choose == "paper" || secondPlayer.choose == "spock"))
             {
                 firstPlayer.points++;
-                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
-                Console.ReadLine();
+                DisplayWinner();
             }
-            else if(firstPlayer.playerGesture == "spock" && (secondPlayer.playerGesture == "scissor" || secondPlayer.playerGesture == "rock"))
+            else if(firstPlayer.choose == "spock" && (secondPlayer.choose == "scissor" || secondPlayer.choose == "rock"))
             {
                 firstPlayer.points++;
-                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
-                Console.ReadLine();
+                DisplayWinner();
             }
             else
             {
                 secondPlayer.points++;
-                Console.WriteLine("Second player wins this round. Score is: " + secondPlayer.points);
+                Console.WriteLine(secondPlayer.name + " wins this round. Score is: " + secondPlayer.points);
                 Console.ReadLine();
+                Console.Clear();
             }
         }
 
@@ -103,6 +118,7 @@ namespace RPSLS
             secondPlayer.PlayerChoice();
             GameRule();
         }
+
         public void WinLose()
         {
             do
@@ -110,16 +126,40 @@ namespace RPSLS
                 GameBattle();
             }
             while (firstPlayer.points != 3 && secondPlayer.points != 3);
-            Console.WriteLine("First player points: " + firstPlayer.points + "\n" + "Second player points: " + secondPlayer.points);
-            if(firstPlayer.points == 3)
+            Console.WriteLine(firstPlayer.name + ":" + firstPlayer.points + "\n" + secondPlayer.name + ":" + secondPlayer.points);
+            Console.ReadLine();
+            Console.Clear();
+            if (firstPlayer.points == 3)
             {
                 Console.WriteLine(firstPlayer.name + " wins the match! Congratulation!!!");
                 Console.ReadLine();
+                Console.Clear();
             }
             else
             {
                 Console.WriteLine(secondPlayer.name + " wins the match! Congratulation!!!");
                 Console.ReadLine();
+                Console.Clear();
+            }
+        }
+
+        public void Replay()
+        {
+            Console.WriteLine("Would you like to play again? Enter yes or no.");
+            string reply = Console.ReadLine().ToLower();
+            Console.Clear();
+            if (reply == "yes" || reply == "y")
+            {
+                GameStart();
+            }
+            else if (reply == "no" || reply == "n")
+            {
+                Console.WriteLine("Thanks for playing.");
+                Console.Clear();
+            }
+            else
+            {
+                Replay();
             }
         }
     }

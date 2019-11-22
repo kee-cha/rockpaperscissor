@@ -12,7 +12,7 @@ namespace RPSLS
         public int choice;
         public int points;
         public string name;
-        public string playerGesture;
+        public string choose;
 
 
         public abstract void ChooseNumber();

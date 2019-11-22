@@ -23,50 +23,27 @@ namespace RPSLS
             validateChoice = Console.ReadLine();
             Console.Clear();
 
-            foreach( string select in selection)
+            if(selection.Contains(validateChoice))
             {
-                if(validateChoice == select)
-                {
-                    choice = Int32.Parse(validateChoice);
-                    break;
-                }
-                else
-                {
-                    choice = 0;
-                }
+                choice = Int32.Parse(validateChoice);
             }
-            
+            else
+            {
+                ChooseNumber();
+            }
         }
 
         public override void ChoosePlayerName()
         {
             Console.WriteLine("Please enter your name.");
-            name = Console.ReadLine();
+            name = Console.ReadLine().ToUpper();
             Console.Clear();
         }
         public override void PlayerChoice()
         {
-            switch (choice)
-            {
-                case 1:
-                    playerGesture = gestures.ElementAt(0);
-                    break;
-                case 2:
-                    playerGesture = gestures.ElementAt(1);
-                    break;
-                case 3:
-                    playerGesture = gestures.ElementAt(2);
-                    break;
-                case 4:
-                    playerGesture = gestures.ElementAt(3);
-                    break;
-                case 5:
-                    playerGesture = gestures.ElementAt(4);
-                    break;
-            }
-            Console.WriteLine(playerGesture);
+            choose = gestures[choice - 1];
+            Console.WriteLine(choose);
             Console.Clear();
-            
         }
     }
 }
