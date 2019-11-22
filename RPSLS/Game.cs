@@ -62,51 +62,49 @@ namespace RPSLS
             Replay();
         }
 
-        public void DisplayWinner()
+        public void DisplayWinner(Player player)
         {
-            Console.WriteLine(firstPlayer.name + " wins this round. Score is: " + firstPlayer.points);
+            Console.WriteLine(player.name + " wins this round. Score is: " + player.points);
             Console.ReadLine();
             Console.Clear();
         }
         public void GameRule()
         {
-            if(firstPlayer.choose == secondPlayer.choose)
+            if (firstPlayer.choose == secondPlayer.choose)
             {
                 Console.WriteLine("This round is a tie.");
                 Console.ReadLine();
                 Console.Clear();
             }
-            else if(firstPlayer.choose == "rock" && (secondPlayer.choose == "scissor" || secondPlayer.choose == "lizard"))
+            else if (firstPlayer.choose == "rock" && (secondPlayer.choose == "scissor" || secondPlayer.choose == "lizard"))
             {
                 firstPlayer.points++;
-                DisplayWinner();
+                DisplayWinner(firstPlayer);
             }
-            else if(firstPlayer.choose == "scissor" && (secondPlayer.choose == "paper" || secondPlayer.choose == "lizard"))
+            else if (firstPlayer.choose == "scissor" && (secondPlayer.choose == "paper" || secondPlayer.choose == "lizard"))
             {
                 firstPlayer.points++;
-                DisplayWinner();
+                DisplayWinner(firstPlayer);
             }
-            else if(firstPlayer.choose == "paper" && (secondPlayer.choose == "rock" || secondPlayer.choose == "spock"))
+            else if (firstPlayer.choose == "paper" && (secondPlayer.choose == "rock" || secondPlayer.choose == "spock"))
             {
                 firstPlayer.points++;
-                DisplayWinner();
+                DisplayWinner(firstPlayer);
             }
-            else if(firstPlayer.choose == "lizard" && (secondPlayer.choose == "paper" || secondPlayer.choose == "spock"))
+            else if (firstPlayer.choose == "lizard" && (secondPlayer.choose == "paper" || secondPlayer.choose == "spock"))
             {
                 firstPlayer.points++;
-                DisplayWinner();
+                DisplayWinner(firstPlayer);
             }
-            else if(firstPlayer.choose == "spock" && (secondPlayer.choose == "scissor" || secondPlayer.choose == "rock"))
+            else if (firstPlayer.choose == "spock" && (secondPlayer.choose == "scissor" || secondPlayer.choose == "rock"))
             {
                 firstPlayer.points++;
-                DisplayWinner();
+                DisplayWinner(firstPlayer);
             }
             else
             {
                 secondPlayer.points++;
-                Console.WriteLine(secondPlayer.name + " wins this round. Score is: " + secondPlayer.points);
-                Console.ReadLine();
-                Console.Clear();
+                DisplayWinner(secondPlayer);
             }
         }
 

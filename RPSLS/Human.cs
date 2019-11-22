@@ -11,7 +11,6 @@ namespace RPSLS
         public List<string> selection = new List<string>() { "1", "2", "3", "4", "5" };
         public string validateChoice;
        
-
         public override void ChooseNumber()
         {
             Console.WriteLine("Enter your number selection from 1 -5." + "\n"
