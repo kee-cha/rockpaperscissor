@@ -16,6 +16,10 @@ namespace RPSLS
             Console.WriteLine("How many of players will be playing? 1 or 2");
             string numOfPlayer = Console.ReadLine();
             Console.Clear();
+            if(numOfPlayer != "1" && numOfPlayer != "2")
+            {
+                GetNumOfPlayer();
+            }
             return numOfPlayer;
         }
 
@@ -42,41 +46,80 @@ namespace RPSLS
             CreatePlayers(input);
             firstPlayer.ChoosePlayerName();
             secondPlayer.ChoosePlayerName();
-            firstPlayer.ChooseNumber();
-            firstPlayer.PlayerChoice();
-            secondPlayer.ChooseNumber();
-            secondPlayer.PlayerChoice();
+            WinLose();
         }
 
         public void GameRule()
         {
             if(firstPlayer.playerGesture == secondPlayer.playerGesture)
             {
-                Console.WriteLine("tie");
+                Console.WriteLine("This round is a tie.");
+                Console.ReadLine();
             }
             else if(firstPlayer.playerGesture == "rock" && (secondPlayer.playerGesture == "scissor" || secondPlayer.playerGesture == "lizard"))
             {
                 firstPlayer.points++;
+                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
+                Console.ReadLine();
+                
             }
             else if(firstPlayer.playerGesture == "scissor" && (secondPlayer.playerGesture == "paper" || secondPlayer.playerGesture == "lizard"))
             {
                 firstPlayer.points++;
+                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
+                Console.ReadLine();
             }
             else if(firstPlayer.playerGesture == "paper" && (secondPlayer.playerGesture == "rock" || secondPlayer.playerGesture == "spock"))
             {
                 firstPlayer.points++;
+                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
+                Console.ReadLine();
             }
             else if(firstPlayer.playerGesture == "lizard" && (secondPlayer.playerGesture == "paper" || secondPlayer.playerGesture == "spock"))
             {
                 firstPlayer.points++;
+                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
+                Console.ReadLine();
             }
-            else if(firstPlayer.playerGesture == "spock" && (secondPlayer.playerGesture == "scissors" || secondPlayer.playerGesture == "rock"))
+            else if(firstPlayer.playerGesture == "spock" && (secondPlayer.playerGesture == "scissor" || secondPlayer.playerGesture == "rock"))
             {
                 firstPlayer.points++;
+                Console.WriteLine(" First player wins this round. Score is: " + firstPlayer.points);
+                Console.ReadLine();
             }
             else
             {
                 secondPlayer.points++;
+                Console.WriteLine("Second player wins this round. Score is: " + secondPlayer.points);
+                Console.ReadLine();
+            }
+        }
+
+        public void GameBattle()
+        {
+            firstPlayer.ChooseNumber();
+            firstPlayer.PlayerChoice();
+            secondPlayer.ChooseNumber();
+            secondPlayer.PlayerChoice();
+            GameRule();
+        }
+        public void WinLose()
+        {
+            do
+            {
+                GameBattle();
+            }
+            while (firstPlayer.points != 3 && secondPlayer.points != 3);
+            Console.WriteLine("First player points: " + firstPlayer.points + "\n" + "Second player points: " + secondPlayer.points);
+            if(firstPlayer.points == 3)
+            {
+                Console.WriteLine(firstPlayer.name + " wins the match! Congratulation!!!");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine(secondPlayer.name + " wins the match! Congratulation!!!");
+                Console.ReadLine();
             }
         }
     }
